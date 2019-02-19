@@ -15,6 +15,7 @@ div#clock_frame
 {
     /* 横幅を親要素であるbodyの100%(同じ幅)にする */
     width: 100%;
+    margin-top: 0.5em;
 }
 
 /* span要素のデフォルト */
@@ -25,7 +26,7 @@ span
     /* ここでは親要素であるdivの内部で右に寄せて配置させる */
     float: right;
     /* 横幅を親要素であるdivの85%にする */
-    width: 90%;
+    width: 95%;
     /* フォントの種類を一番上で指定したGoogle Webフォントに設定する */
     font-family: 'Open Sans', cursive;
 }
@@ -42,8 +43,22 @@ span#clock_date
 }
 
 /* id="clock_time" のspan要素 */
-span#clock_time
+span#clock_time_h
 {
     /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の2倍にする */
-    font-size: 2em;
+    font-size: 3em;
+}
+
+span#clock_time_mi
+{
+    /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の2倍にする */
+    text-align: center;
+    font-size: 3em;
+}
+
+span#clock_time_s
+{
+    /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の2倍にする */
+    text-align: right;
+    font-size: 3em;
 }
