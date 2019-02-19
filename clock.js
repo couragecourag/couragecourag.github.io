@@ -20,7 +20,7 @@ function clock() {
     var s = now.getSeconds();
 
 
-    if (mi % 10 == 0) {
+    if (mi % 10 == 0 && s == 0) {
         setColorNegative();
     }
 
