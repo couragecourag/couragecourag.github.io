@@ -19,6 +19,11 @@ function clock() {
     // 秒
     var s = now.getSeconds();
 
+    /*
+       if (mi % 10 == 0) {
+           setColorNegative();
+       }
+   */
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
     if (d < 10) d = "0" + d;
@@ -26,7 +31,7 @@ function clock() {
     if (s < 10) s = "0" + s;
 
     //　HTML: <span id="clock_date">(ココの日付文字列を書き換え)</span>
-    document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " (" + w + ")";
+    document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " " + w;
     //　HTML: <span id="clock_time">(ココの時刻文字列を書き換え)</span>
     document.getElementById("clock_time").innerHTML = h + ":" + mi + ":" + s;
     //　HTML: <div id="clock_frame"> の内部要素のフォントサイズをウインドウサイズの10分の1ピクセルに設定
@@ -37,7 +42,7 @@ function setColorNegative() {
     document.body.style.backgroundColor = 'white';
     document.body.style.color = 'black';
 
-    setTimeout(setColorPositive, 100);
+    setTimeout(setColorPositive, 1000);
 }
 
 function setColorPositive() {
@@ -46,5 +51,3 @@ function setColorPositive() {
 }
 
 setInterval(clock, 1000);
-
-setInterval(setColorNegative, 200);
