@@ -4,6 +4,8 @@ function clock() {
     var weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thr", "Fri", "Sat");
     // 現在日時を表すインスタンスを取得
     var now = new Date();
+    now.setHours(now.getHours() + 9);
+
     // 年
     var y = now.getFullYear();
     // 月 0~11で取得されるので実際の月は+1したものとなる
@@ -27,6 +29,7 @@ function clock() {
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
     if (d < 10) d = "0" + d;
+    if (h < 10) h = "0" + h;
     if (mi < 10) mi = "0" + mi;
     if (s < 10) s = "0" + s;
 
