@@ -34,6 +34,7 @@ span#clock_date
     font-size: 1.5em;
     /* 右のパディングの幅を親要素であるdivで設定されたフォントサイズ(px)の0.5倍にする */
     /* padding-right: 0.5em; */
+    height: 0.3em;
 }
 
 /* id="clock_time" のspan要素 */
