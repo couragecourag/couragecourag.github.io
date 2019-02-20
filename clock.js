@@ -55,8 +55,9 @@ function setColorPositive() {
 }
 
 function weather() {
-    $.getJSON('http://weather.livedoor.com/forecast/webservice/json/v1?city=270000') // json読み込み開始
-        .done(function (json) { // jsonの読み込みに成功した時
+    alert('TEST2');
+    $.getJSON('http://weather.livedoor.com/forecast/webservice/json/v1?city=270000', // json読み込み開始
+        function (json) {
             data = JSON.stringify(json);
             console.log(json["forecasts"][0]["date"]);
             console.log(json);
@@ -76,8 +77,10 @@ function weather() {
                 }
             }
             $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
-        })
+        }
+    )
 }
 
 setInterval(clock, 1000);
+alert('TEST1');
 weather();
