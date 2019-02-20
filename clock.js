@@ -77,8 +77,7 @@ function weather() {
         $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
     });
 }
-clock();
-weather();
 
+weather();
 setInterval(clock, 1000);
 setInterval(weather, 3600000);
