@@ -1,7 +1,7 @@
 // 時計のメインとなる関数
 function clock() {
     // 曜日を表す各文字列の配列
-    var weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thr", "Fri", "Sat");
+    var weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat");
     // 現在日時を表すインスタンスを取得
     var now = new Date();
     now.setHours(now.getHours() + 9);
@@ -21,10 +21,11 @@ function clock() {
     // 秒
     var s = now.getSeconds();
 
-
+    /*
     if (mi % 10 == 0 && s == 0) {
         setColorNegative();
     }
+    */
 
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
@@ -36,21 +37,21 @@ function clock() {
     //　HTML: <span id="clock_date">(ココの日付文字列を書き換え)</span>
     document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " " + w;
     //　HTML: <span id="clock_time">(ココの時刻文字列を書き換え)</span>
-    document.getElementById("clock_time").innerHTML = h + ":" + mi + ":" + s;
+    document.getElementById("clock_time").innerHTML = h + ":" + mi; /* + ":" + s;*/
     //　HTML: <div id="clock_frame"> の内部要素のフォントサイズをウインドウサイズの10分の1ピクセルに設定
-    document.getElementById("clock_frame").style.fontSize = window.innerWidth / 10 + "px";
+    //document.getElementById("clock_frame").style.fontSize = window.innerWidth / 10 + "px";
 }
 
 function setColorNegative() {
-    document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
 
     setTimeout(setColorPositive, 1000);
 }
 
 function setColorPositive() {
-    document.body.style.backgroundColor = 'black';
-    document.body.style.color = 'white';
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
 }
 
 setInterval(clock, 1000);
