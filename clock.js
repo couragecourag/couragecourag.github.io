@@ -54,4 +54,30 @@ function setColorPositive() {
     document.body.style.color = 'black';
 }
 
+function weather() {
+    $.getJSON('http://weather.livedoor.com/forecast/webservice/json/v1?city=270000') // json読み込み開始
+        .done(function (json) { // jsonの読み込みに成功した時
+            data = JSON.stringify(json);
+            console.log(json["forecasts"][0]["date"]);
+            console.log(json);
+
+            for (var i = 0; i < 3; i++) {
+                $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
+                $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
+                $("#day" + i + " .telop").text(json["forecasts"][i]["telop"]);
+                $("#day" + i + " .image img").attr("src", json["forecasts"][i]["image"]["url"]);
+
+                if (json["forecasts"][i]["temperature"]["max"] != null && json["forecasts"][i]["temperature"]["min"]) {
+                    $("#day" + i + " .temperature").text(json["forecasts"][i]["temperature"]["max"]["celsius"] +
+                        "℃/" + json["forecasts"][i]["temperature"]["min"]["celsius"] + "℃");
+                }
+                else {
+                    $("#day" + i + " .temperature").text("-/-");
+                }
+            }
+            $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
+        })
+}
+
 setInterval(clock, 1000);
+weather();

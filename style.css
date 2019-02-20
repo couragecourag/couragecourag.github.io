@@ -10,6 +10,11 @@ body
     background-color: white;
 }
 
+span
+{
+    display: inline-block;
+}
+
 /* id="clock_frame" のdiv要素 */
 div#clock_frame
 {
@@ -17,18 +22,6 @@ div#clock_frame
     width: 100%;
     font-size: 2.5em;
     text-align: center;
-}
-
-/* span要素のデフォルト */
-span
-{
-    /* 本来はインライン要素であるspanをブロック要素として扱う */
-    display: block;
-    /* ここでは親要素であるdivの内部で右に寄せて配置させる */
-    /*float: right;*/
-    /* 横幅を親要素であるdivの85%にする */
-    width: 100%;
-    /* フォントの種類を一番上で指定したGoogle Webフォントに設定する */
     font-family: 'Teko';
 }
 
@@ -36,7 +29,7 @@ span
 span#clock_date
 {
     /* この要素の中におけるテキストを右詰めにする デフォルト値のtext-align:leftを上書き */
-    
+    display: block;
     /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の0.5倍にする */
     font-size: 1.5em;
     /* 右のパディングの幅を親要素であるdivで設定されたフォントサイズ(px)の0.5倍にする */
@@ -50,4 +43,33 @@ span#clock_time
     /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の2倍にする */
     font-size: 4.5em;
     height: 0em;
+}
+
+div#weather_frame
+{
+    width: 100%;
+    font-family: sans-serif;
+}
+
+span.weather_day
+{
+    width: 170px;
+    text-align: center;
+    align-content: center;
+}
+
+div.date
+{
+}
+
+div.telop
+{
+}
+
+div.image
+{
+}
+
+div.temperature
+{
 }
