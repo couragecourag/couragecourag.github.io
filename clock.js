@@ -55,6 +55,7 @@ function setColorPositive() {
 }
 
 function weather() {
+    alert('TEST2');
     $.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
@@ -67,6 +68,7 @@ function weather() {
     })
         // Ajaxリクエストが成功した時発動
         .done((json) => {
+            alert('TEST3');
             for (var i = 0; i < 3; i++) {
                 $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
                 $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
@@ -80,10 +82,11 @@ function weather() {
                 else {
                     $("#day" + i + " .temperature").text("-/-");
                 }
-            }
+            };
             $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
         });
 }
 
+alert('TEST1');
 setInterval(clock, 1000);
 weather();
