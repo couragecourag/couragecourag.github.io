@@ -1,3 +1,5 @@
+$("#day0 .date").text("hoge");
+
 // 時計のメインとなる関数
 function clock() {
     // 曜日を表す各文字列の配列
@@ -56,35 +58,28 @@ function setColorPositive() {
 
 function weather() {
     alert('TEST2');
-    $.ajaxPrefilter(function (options) {
-        if (options.crossDomain && jQuery.support.cors) {
-            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-        }
-    });
     $.ajax({
-        url: 'http://weather.livedoor.com/forecast/webservice/json/v1?city=270000',
-        type: 'GET',
+        url: 'https://cors-anywhere.herokuapp.com/http://weather.livedoor.com/forecast/webservice/json/v1?city=270000',
+        method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-        // Ajaxリクエストが成功した時発動
-        .done((json) => {
-            alert('TEST3');
-            for (var i = 0; i < 3; i++) {
-                $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
-                $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
-                $("#day" + i + " .telop").text(json["forecasts"][i]["telop"]);
-                $("#day" + i + " .image img").attr("src", json["forecasts"][i]["image"]["url"]);
+    }).done(function (json) {
+        alert('TEST3');
+        for (var i = 0; i < 3; i++) {
+            $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
+            $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
+            $("#day" + i + " .telop").text(json["forecasts"][i]["telop"]);
+            $("#day" + i + " .image img").attr("src", json["forecasts"][i]["image"]["url"]);
 
-                if (json["forecasts"][i]["temperature"]["max"] != null && json["forecasts"][i]["temperature"]["min"]) {
-                    $("#day" + i + " .temperature").text(json["forecasts"][i]["temperature"]["max"]["celsius"] +
-                        "℃/" + json["forecasts"][i]["temperature"]["min"]["celsius"] + "℃");
-                }
-                else {
-                    $("#day" + i + " .temperature").text("-/-");
-                }
-            };
-            $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
-        });
+            if (json["forecasts"][i]["temperature"]["max"] != null && json["forecasts"][i]["temperature"]["min"]) {
+                $("#day" + i + " .temperature").text(json["forecasts"][i]["temperature"]["max"]["celsius"] +
+                    "℃/" + json["forecasts"][i]["temperature"]["min"]["celsius"] + "℃");
+            }
+            else {
+                $("#day" + i + " .temperature").text("-/-");
+            }
+        };
+        $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
+    });
 }
 
 alert('TEST1');
