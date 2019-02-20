@@ -15,7 +15,7 @@ div#clock_frame
 {
     /* 横幅を親要素であるbodyの100%(同じ幅)にする */
     width: 100%;
-    font-size: 3em;
+    font-size: 2em;
     /*text-align: center;*/
 }
 
