@@ -56,7 +56,7 @@ function setColorPositive() {
 
 function weather() {
     alert('TEST2');
-    $.getJSON('http://weather.livedoor.com/forecast/webservice/json/v1?city=270000', // json読み込み開始
+    $.getJSON('https://weather.livedoor.com/forecast/webservice/json/v1?city=270000', // json読み込み開始
         function (json) {
             alert('TEST3');
             console.log(json["forecasts"][0]["date"]);
