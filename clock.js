@@ -1,5 +1,3 @@
-$("#day0 .date").text("hoge");
-
 // 時計のメインとなる関数
 function clock() {
     // 曜日を表す各文字列の配列
@@ -57,13 +55,11 @@ function setColorPositive() {
 }
 
 function weather() {
-    alert('TEST2');
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/http://weather.livedoor.com/forecast/webservice/json/v1?city=270000',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
-        alert('TEST3');
         for (var i = 0; i < 3; i++) {
             $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
             $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
@@ -81,7 +77,5 @@ function weather() {
         $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
     });
 }
-
-alert('TEST1');
 setInterval(clock, 1000);
 weather();
