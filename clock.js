@@ -58,7 +58,7 @@ function weather() {
     alert('TEST2');
     $.getJSON('http://weather.livedoor.com/forecast/webservice/json/v1?city=270000', // json読み込み開始
         function (json) {
-            data = JSON.stringify(json);
+            alert('TEST3');
             console.log(json["forecasts"][0]["date"]);
             console.log(json);
 
