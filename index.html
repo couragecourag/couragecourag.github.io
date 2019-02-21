@@ -3,6 +3,9 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- 文字コードの宣言 -->
     <meta charset="UTF-8">
     <!-- ページのタイトル(ブラウザのタイトルバーに表示) -->
@@ -23,61 +26,78 @@
     </div>
 
     <div id="weather_frame">
-        <span id="day0" class="weather_day">
-            <div class="date">
-                日付
-            </div>
-            <div class="dateLabel">
-                いつか
-            </div>
-            <div class="image">
-                <img src="http://weather.livedoor.com/img/icon/1.gif">
-            </div>
-            <div class="telop">
-                ええ天気
-            </div>
-            <div class="temperature">
-                99℃/99℃
-            </div>
-        </span>
-        <span id="day1" class="weather_day">
-            <div class="date">
-                日付
-            </div>
-            <div class="dateLabel">
-                いつか
-            </div>
-            <div class="image">
-                <img src="http://weather.livedoor.com/img/icon/1.gif">
-            </div>
-            <div class="telop">
-                ええ天気
-            </div>
-            <div class="temperature">
-                99℃/99℃
-            </div>
-        </span>
-        <span id="day2" class="weather_day">
-            <div class="date">
-                日付
-            </div>
-            <div class="dateLabel">
-                いつか
-            </div>
-            <div class="image">
-                <img src="http://weather.livedoor.com/img/icon/1.gif">
-            </div>
-            <div class="telop">
-                ええ天気
-            </div>
-            <div class="temperature">
-                99℃/99℃
-            </div>
-        </span>
-        <div id="description">
-            本日は晴天なり
-        </div>
     </div>
+
+    <div id="hour_template" class="weather_hour">
+        <div class="time">
+            <span class="caption">日付</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="summry">
+            <span class="caption">概要</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="icon">
+            <img src="https://darksky.net/images/weather-icons/partly-cloudy-day.png" class="icon">
+        </div>
+
+        <div class="precipIntensity">
+            <span class="caption">降水量</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="precipProbability">
+            <span class="caption">降水確率</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="temperature">
+            <span class="caption">温度</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="apparentTemperature">
+            <span class="caption">体感温度</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="humidity">
+            <span class="caption">湿度</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="pressure">
+            <span class="caption">圧力</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="windSpeed">
+            <span class="caption">風速</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="windBearing">
+            <span class="caption">風向き</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="cloudCover">
+            <span class="caption">雲量</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="uvIndex">
+            <span class="caption">UV指数</span>
+            <span class="data"></span>
+        </div>
+
+        <div class="visibility">
+            <span class="caption">視程</span>
+            <span class="data"></span>
+        </div>
+        </span>
 </body>
 
 </html>

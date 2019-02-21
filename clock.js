@@ -54,30 +54,91 @@ function setColorPositive() {
     document.body.style.color = 'black';
 }
 
+function getUvIndex(uv) {
+    if (11 <= uv) {
+        return "極端に強い";
+    }
+    else if (8 <= uv) {
+        return "非常に強い";
+    }
+    else if (6 <= uv) {
+        return "強い";
+    }
+    else if (3 <= uv) {
+        return "中程度";
+    }
+
+    return "弱い";
+}
+
+function getShortTimeString(time) {
+    var now = new Date(time * 1000);
+
+    // 月 0~11で取得されるので実際の月は+1したものとなる
+    var mo = now.getMonth() + 1;
+    // 日
+    var d = now.getDate();
+    // 時
+    var h = now.getHours();
+
+    // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
+    if (mo < 10) mo = "0" + mo;
+    if (d < 10) d = "0" + d;
+    if (h < 10) h = "0" + h;
+
+    return mo + "/" + d + " " + h + "時";
+}
+
 function weather() {
     $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/http://weather.livedoor.com/forecast/webservice/json/v1?city=270000',
+        url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8268e0caa7f76b405e49fdcd45e7eec2/34.805,135.585?units=si&lang=ja',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
-        for (var i = 0; i < 3; i++) {
-            $("#day" + i + " .date").text(json["forecasts"][i]["date"].replace(/-/g, "/"));
-            $("#day" + i + " .dateLabel").text(json["forecasts"][i]["dateLabel"]);
-            $("#day" + i + " .telop").text(json["forecasts"][i]["telop"]);
-            $("#day" + i + " .image img").attr("src", json["forecasts"][i]["image"]["url"]);
+        console.log(json);
 
-            if (json["forecasts"][i]["temperature"]["max"] != null && json["forecasts"][i]["temperature"]["min"]) {
-                $("#day" + i + " .temperature").text(json["forecasts"][i]["temperature"]["max"]["celsius"] +
-                    "℃/" + json["forecasts"][i]["temperature"]["min"]["celsius"] + "℃");
-            }
-            else {
-                $("#day" + i + " .temperature").text("-/-");
-            }
+        for (var i = 0; i < 49; i++) {
+            var hourly = json["hourly"]["data"][i];
+            console.log(i);
+            console.log(hourly);
+            console.log(hourly["time"] * 1000);
+            console.log(new Date(hourly["time"] * 1000));
+
+            $("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
+
+            $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
+            $("#hour" + i + " .summry .data").text(hourly["summary"]);
+            $("#hour" + i + " .icon img").attr("src", "https://darksky.net/images/weather-icons/" + hourly["icon"] + ".png");
+            $("#hour" + i + " .precipIntensity .data").text(hourly["precipIntensity"] + "mm");
+            $("#hour" + i + " .precipProbability .data").text(Math.floor(hourly["precipProbability"] * 10000) / 100 + "%");
+            $("#hour" + i + " .temperature .data").text(hourly["temperature"] + "℃");
+            $("#hour" + i + " .apparentTemperature .data").text(hourly["apparentTemperature"] + "℃");
+            $("#hour" + i + " .humidity .data").text(Math.floor(hourly["humidity"] * 10000) / 100 + "%");
+            $("#hour" + i + " .pressure .data").text(hourly["pressure"] + "㍱");
+            $("#hour" + i + " .windSpeed .data").text(hourly["windSpeed"] + "m/s");
+            $("#hour" + i + " .windBearing .data").text(hourly["windBearing"]);
+            $("#hour" + i + " .cloudCover .data").text(Math.floor(hourly["cloudCover"] * 10000) / 100 + "%");
+            $("#hour" + i + " .uvIndex .data").text(getUvIndex(hourly["uvIndex"]));
+            $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
-        $("#description").text(json["description"]["text"].replace(/\s+/g, ""));
+
+        $('#weather_frame').slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            speed: 0,
+            infinite: true,
+            swipe: false,
+            draggable: false,
+            arrows: false,
+            slidesToShow: 3
+        });
     });
 }
 
 weather();
 setInterval(clock, 1000);
 setInterval(weather, 3600000);
+
+$(document).ready(function () {
+
+});

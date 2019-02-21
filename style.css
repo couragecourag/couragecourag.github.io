@@ -1,5 +1,6 @@
 /* Google Webフォントを利用設定するCSSをインポート */
-@import url(http://fonts.googleapis.com/css?family=Teko:700);
+@import url(https://fonts.googleapis.com/css?family=Teko:700);
+@import url(https://fonts.googleapis.com/css?family=Sawarabi+Mincho);
 
 /* body要素(全体) */
 body
@@ -47,7 +48,7 @@ span#clock_time
 div#weather_frame
 {
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Sawarabi Mincho';
 }
 
 span.weather_day
@@ -57,18 +58,17 @@ span.weather_day
     align-content: center;
 }
 
-div.date
+img.icon
 {
+    width: 30px;
 }
 
-div.telop
+div#hour_template
 {
+    display: none;
 }
 
-div.image
+span.caption
 {
-}
-
-div.temperature
-{
+    width: 100px;
 }
