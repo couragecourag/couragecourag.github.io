@@ -127,8 +127,8 @@ function weather() {
 
         $('#weather_frame').slick({
             autoplay: true,
-            autoplaySpeed: 1000,
-            speed: 0,
+            autoplaySpeed: 3000,
+            speed: 1000,
             infinite: true,
             swipe: false,
             draggable: false,
