@@ -95,7 +95,7 @@ function weather() {
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
-        console.log(json);
+        //console.log(json);
 
         for (var i = 0; i < 2; i++) {
             var hourly = json["hourly"]["data"][i];
