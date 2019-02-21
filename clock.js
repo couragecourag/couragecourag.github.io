@@ -90,46 +90,26 @@ function getShortTimeString(time) {
 }
 
 function weather() {
-    alert("1");
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8268e0caa7f76b405e49fdcd45e7eec2/34.805,135.585?units=si&lang=ja',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
         //console.log(json);
-        alert("2");
-        for (var i = 0; i < 2; i++) {
-            alert("3");
+        for (var i = 0; i < 6; i++) {
             var hourly = json["hourly"]["data"][i];
-            alert("01");
-            /*
-            console.log(i);
-            console.log(hourly);
-            console.log(hourly["time"] * 1000);
-            console.log(new Date(hourly["time"] * 1000));
-            
-            */
             var hoge = $("#hour_template").clone();
-            alert("002");
             hoge = hoge.attr('id', "hour" + i);
-            alert("0002");
             hoge.appendTo("#weather_frame");
 
             //$("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
-            alert("02");
             $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
-            alert("03");
             $("#hour" + i + " .summry .data").text(hourly["summary"]);
-            alert("04");
             $("#hour" + i + " .icon img").attr("src", "https://darksky.net/images/weather-icons/" + hourly["icon"] + ".png");
-            alert("05");
             $("#hour" + i + " .precipIntensity .data").text(hourly["precipIntensity"] + "mm");
             $("#hour" + i + " .precipProbability .data").text(Math.floor(hourly["precipProbability"] * 10000) / 100 + "%");
-            alert("06");
             $("#hour" + i + " .temperature .data").text(hourly["temperature"] + "℃");
-            alert("07");
             $("#hour" + i + " .apparentTemperature .data").text(hourly["apparentTemperature"] + "℃");
-            alert("08");
             $("#hour" + i + " .humidity .data").text(Math.floor(hourly["humidity"] * 10000) / 100 + "%");
             $("#hour" + i + " .pressure .data").text(hourly["pressure"] + "㍱");
             $("#hour" + i + " .windSpeed .data").text(hourly["windSpeed"] + "m/s");
@@ -139,28 +119,23 @@ function weather() {
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
 
-        alert("4");
-        /*
-                $('#weather_frame').slick({
-                    autoplay: true,
-                    autoplaySpeed: 10000,
-                    speed: 0,
-                    infinite: true,
-                    swipe: false,
-                    draggable: false,
-                    arrows: false,
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                });
-        */
-        alert("5");
+
+        $('#weather_frame').slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            speed: 0,
+            infinite: true,
+            swipe: false,
+            draggable: false,
+            arrows: false,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
     });
 }
-alert("0");
 weather();
 setInterval(clock, 1000);
 //setInterval(weather, 3600000);
 
 $(document).ready(function () {
-    alert("6");
 });
