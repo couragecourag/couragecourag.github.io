@@ -21,12 +21,6 @@ function clock() {
     // 秒
     var s = now.getSeconds();
 
-    /*
-    if (mi % 10 == 0 && s == 0) {
-        setColorNegative();
-    }
-    */
-
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
     if (d < 10) d = "0" + d;
@@ -38,10 +32,12 @@ function clock() {
     document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " " + w;
     //　HTML: <span id="clock_time">(ココの時刻文字列を書き換え)</span>
     $("#clock_h").text(h);
+    /*
     $("#clock_coron").css("visibility", "hidden");
     setTimeout(() => {
         $("#clock_coron").css("visibility", "visible");
     }, 500);
+    */
     $("#clock_mi").text(mi);
     //　HTML: <div id="clock_frame"> の内部要素のフォントサイズをウインドウサイズの10分の1ピクセルに設定
     //document.getElementById("clock_frame").style.fontSize = window.innerWidth / 10 + "px";
@@ -125,22 +121,28 @@ function weather() {
         };
 
 
-        $('#weather_frame').slick({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            speed: 1000,
-            infinite: true,
-            swipe: false,
-            draggable: false,
-            arrows: false,
-            slidesToShow: 3,
-            slidesToScroll: 3
-        });
+
     });
 }
 weather();
 setInterval(clock, 1000);
-//setInterval(weather, 3600000);
 
-$(document).ready(function () {
-});
+setInterval(() => {
+    setColorNegative;
+    weather();
+}, 3600000);
+
+
+setTimeout(() => {
+    $('#weather_frame').slick({
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 0,
+        infinite: true,
+        swipe: false,
+        draggable: false,
+        arrows: false,
+        slidesToShow: 3,
+        slidesToScroll: 3
+    });
+}, 10000);
