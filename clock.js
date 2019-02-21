@@ -97,7 +97,7 @@ function weather() {
     }).done(function (json) {
         console.log(json);
 
-        for (var i = 0; i < 49; i++) {
+        for (var i = 0; i < 2; i++) {
             var hourly = json["hourly"]["data"][i];
             console.log(i);
             console.log(hourly);
