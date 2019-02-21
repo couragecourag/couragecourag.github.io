@@ -109,7 +109,13 @@ function weather() {
             console.log(new Date(hourly["time"] * 1000));
             
             */
-            $("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
+            var hoge = $("#hour_template").clone();
+            alert("002");
+            hoge = hoge.attr('id', "hour" + i);
+            alert("0002");
+            hoge.appendTo("#weather_frame");
+
+            //$("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
             alert("02");
             $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
             alert("03");
