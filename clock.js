@@ -123,19 +123,19 @@ function weather() {
         };
 
         alert("hoge1");
-
-        $('#weather_frame').slick({
-            autoplay: true,
-            autoplaySpeed: 10000,
-            speed: 0,
-            infinite: true,
-            swipe: false,
-            draggable: false,
-            arrows: false,
-            slidesToShow: 3,
-            slidesToScroll: 3
-        });
-
+        /*
+                $('#weather_frame').slick({
+                    autoplay: true,
+                    autoplaySpeed: 10000,
+                    speed: 0,
+                    infinite: true,
+                    swipe: false,
+                    draggable: false,
+                    arrows: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                });
+        */
         alert("hoge2");
     });
 }
