@@ -122,15 +122,18 @@ function weather() {
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
 
+        alert("hoge!");
+
         $('#weather_frame').slick({
             autoplay: true,
-            autoplaySpeed: 1000,
+            autoplaySpeed: 10000,
             speed: 0,
             infinite: true,
             swipe: false,
             draggable: false,
             arrows: false,
-            slidesToShow: 3
+            slidesToShow: 3,
+            slidesToScroll: 3
         });
     });
 }
