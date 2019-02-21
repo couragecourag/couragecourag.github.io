@@ -110,15 +110,20 @@ function weather() {
             
             */
             $("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
-
+            alert("02");
             $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
+            alert("03");
             $("#hour" + i + " .summry .data").text(hourly["summary"]);
+            alert("04");
             $("#hour" + i + " .icon img").attr("src", "https://darksky.net/images/weather-icons/" + hourly["icon"] + ".png");
+            alert("05");
             $("#hour" + i + " .precipIntensity .data").text(hourly["precipIntensity"] + "mm");
             $("#hour" + i + " .precipProbability .data").text(Math.floor(hourly["precipProbability"] * 10000) / 100 + "%");
+            alert("06");
             $("#hour" + i + " .temperature .data").text(hourly["temperature"] + "℃");
+            alert("07");
             $("#hour" + i + " .apparentTemperature .data").text(hourly["apparentTemperature"] + "℃");
-            alert("03");
+            alert("08");
             $("#hour" + i + " .humidity .data").text(Math.floor(hourly["humidity"] * 10000) / 100 + "%");
             $("#hour" + i + " .pressure .data").text(hourly["pressure"] + "㍱");
             $("#hour" + i + " .windSpeed .data").text(hourly["windSpeed"] + "m/s");
@@ -126,7 +131,6 @@ function weather() {
             $("#hour" + i + " .cloudCover .data").text(Math.floor(hourly["cloudCover"] * 10000) / 100 + "%");
             $("#hour" + i + " .uvIndex .data").text(getUvIndex(hourly["uvIndex"]));
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
-            alert("02");
         };
 
         alert("4");
