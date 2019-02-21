@@ -122,7 +122,7 @@ function weather() {
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
 
-        alert("hoge!");
+        alert("hoge1");
 
         $('#weather_frame').slick({
             autoplay: true,
@@ -135,6 +135,8 @@ function weather() {
             slidesToShow: 3,
             slidesToScroll: 3
         });
+
+        alert("hoge2");
     });
 }
 
