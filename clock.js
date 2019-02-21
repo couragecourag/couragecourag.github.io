@@ -90,14 +90,16 @@ function getShortTimeString(time) {
 }
 
 function weather() {
+    alert("1");
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8268e0caa7f76b405e49fdcd45e7eec2/34.805,135.585?units=si&lang=ja',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
         //console.log(json);
-
+        alert("2");
         for (var i = 0; i < 2; i++) {
+            alert("3");
             var hourly = json["hourly"]["data"][i];
 
             /*
@@ -125,7 +127,7 @@ function weather() {
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
 
-        alert("hoge1");
+        alert("4");
         /*
                 $('#weather_frame').slick({
                     autoplay: true,
@@ -139,14 +141,14 @@ function weather() {
                     slidesToScroll: 3
                 });
         */
-        alert("hoge2");
+        alert("5");
     });
 }
-
+alert("0");
 weather();
 setInterval(clock, 1000);
-setInterval(weather, 3600000);
+//setInterval(weather, 3600000);
 
 $(document).ready(function () {
-
+    alert("6");
 });
