@@ -101,7 +101,7 @@ function weather() {
         for (var i = 0; i < 2; i++) {
             alert("3");
             var hourly = json["hourly"]["data"][i];
-
+            alert("01");
             /*
             console.log(i);
             console.log(hourly);
@@ -118,6 +118,7 @@ function weather() {
             $("#hour" + i + " .precipProbability .data").text(Math.floor(hourly["precipProbability"] * 10000) / 100 + "%");
             $("#hour" + i + " .temperature .data").text(hourly["temperature"] + "℃");
             $("#hour" + i + " .apparentTemperature .data").text(hourly["apparentTemperature"] + "℃");
+            alert("03");
             $("#hour" + i + " .humidity .data").text(Math.floor(hourly["humidity"] * 10000) / 100 + "%");
             $("#hour" + i + " .pressure .data").text(hourly["pressure"] + "㍱");
             $("#hour" + i + " .windSpeed .data").text(hourly["windSpeed"] + "m/s");
@@ -125,6 +126,7 @@ function weather() {
             $("#hour" + i + " .cloudCover .data").text(Math.floor(hourly["cloudCover"] * 10000) / 100 + "%");
             $("#hour" + i + " .uvIndex .data").text(getUvIndex(hourly["uvIndex"]));
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
+            alert("02");
         };
 
         alert("4");
