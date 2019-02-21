@@ -99,11 +99,14 @@ function weather() {
 
         for (var i = 0; i < 2; i++) {
             var hourly = json["hourly"]["data"][i];
+
+            /*
             console.log(i);
             console.log(hourly);
             console.log(hourly["time"] * 1000);
             console.log(new Date(hourly["time"] * 1000));
-
+            
+            */
             $("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
 
             $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
