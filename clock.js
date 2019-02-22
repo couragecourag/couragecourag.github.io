@@ -111,31 +111,31 @@ function getTimeString(time) {
 
 function getMoonEmoji(moonPhase) {
     if (moonPhase >= 1) {
-        return "🌑"
+        return "https://twemoji.maxcdn.com/2/72x72/1f311.png"
     }
     if (moonPhase >= 0.875) {
-        return "🌘"
+        return "https://twemoji.maxcdn.com/2/72x72/1f318.png"
     }
     if (moonPhase >= 0.75) {
-        return "🌗"
+        return "https://twemoji.maxcdn.com/2/72x72/1f317.png"
     }
     if (moonPhase >= 0.625) {
-        return "🌖"
+        return "https://twemoji.maxcdn.com/2/72x72/1f316.png"
     }
     if (moonPhase >= 0.5) {
-        return "🌕"
+        return "https://twemoji.maxcdn.com/2/72x72/1f315.png"
     }
     if (moonPhase >= 0.375) {
-        return "🌔"
+        return "https://twemoji.maxcdn.com/2/72x72/1f316.png"
     }
     if (moonPhase >= 0.25) {
-        return "🌓"
+        return "https://twemoji.maxcdn.com/2/72x72/1f313.png"
     }
     if (moonPhase >= 0.125) {
-        return "🌒"
+        return "https://twemoji.maxcdn.com/2/72x72/1f312.png"
     }
 
-    return "🌒"
+    return "https://twemoji.maxcdn.com/2/72x72/1f311.png"
 }
 
 function weather() {
@@ -147,7 +147,9 @@ function weather() {
         for (var i = 0; i < 3; i++) {
             $("#sunmoon" + i + " .sunrise .data").text(getTimeString(json["daily"]["data"][i]["sunriseTime"]));
             $("#sunmoon" + i + " .sunset .data").text(getTimeString(json["daily"]["data"][i]["sunsetTime"]));
-            $("#sunmoon" + i + " .moonphase .data").text(getMoonEmoji(json["daily"]["data"][i]["moonPhase"]));
+            $("#sunmoon" + i + " .moonphase .data img").attr("src", getMoonEmoji(json["daily"]["data"][i]["moonPhase"]));
+
+            console.log(getMoonEmoji(json["daily"]["data"][i]["moonPhase"]));
         }
 
         for (var i = 0; i < 49; i += 3) {

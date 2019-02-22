@@ -94,7 +94,7 @@ div.weather_hour > div
 
 div.sunmoon > span > span.caption
 {
-    width: 50px;
+    width: 70px;
 }
 
 div.sunmoon > span > span.data
@@ -105,4 +105,9 @@ div.sunmoon > span > span.data
 div.sunmoon > span.moonphase > span.data
 {
     width: 50px;
+}
+
+div.sunmoon > span.moonphase > span.data > img
+{
+    width: 20px;
 }
