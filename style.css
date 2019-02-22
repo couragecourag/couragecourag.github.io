@@ -23,8 +23,7 @@ div#clock_frame
     width: 100%;
     font-size: 2.5em;
     text-align: center;
-    /*font-family: 'Teko';*/
-    font-family: 'Sawarabi Mincho';
+    font-family: 'Teko';
 }
 
 /* id="clock_date" のspan要素 */
@@ -51,6 +50,7 @@ div#weather_frame
 {
     width: 100%;
     font-family: 'Sawarabi Mincho';
+    font-size: 5em;
 }
 
 span.weather_day
