@@ -1,5 +1,7 @@
 // 時計のメインとなる関数
 function clock() {
+    alert("0");
+
     // 曜日を表す各文字列の配列
     var weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat");
     // 現在日時を表すインスタンスを取得
@@ -27,6 +29,8 @@ function clock() {
     if (h < 10) h = "0" + h;
     if (mi < 10) mi = "0" + mi;
     if (s < 10) s = "0" + s;
+
+    alert("1");
 
     //　HTML: <span id="clock_date">(ココの日付文字列を書き換え)</span>
     document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " " + w;
