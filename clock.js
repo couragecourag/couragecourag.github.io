@@ -21,11 +21,11 @@ function clock() {
     // 秒
     var s = now.getSeconds();
 
-    /*
-    if (mi % 10 == 0 && s == 0) {
+
+    if (mi == 0 && s == 0) {
+        weather();
         setColorNegative();
     }
-    */
 
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
@@ -44,14 +44,11 @@ function clock() {
 
 function setColorNegative() {
     document.body.style.backgroundColor = 'black';
-    document.body.style.color = 'white';
-
     setTimeout(setColorPositive, 1000);
 }
 
 function setColorPositive() {
     document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
 }
 
 function getUvIndex(uv) {
@@ -119,6 +116,7 @@ function weather() {
 }
 
 function initialize() {
+    setColorNegative();
 
     var hoge = $("#hour_template").clone();
     hoge = hoge.attr('id', "hour0");
@@ -132,8 +130,8 @@ function initialize() {
 
     $('#weather_frame').slick({
         autoplay: true,
-        autoplaySpeed: 100,
-        speed: 1000,
+        autoplaySpeed: 1000,
+        speed: 0,
         infinite: true,
         swipe: false,
         draggable: false,
@@ -151,5 +149,4 @@ $(document).ready(function () {
     initialize()
 
     setInterval(clock, 1000);
-    //setInterval(weather, 1000);
 });
