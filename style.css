@@ -48,7 +48,7 @@ span#clock_time
 
 span#weather_frame
 {
-    width: 100%;
+    width: 360px;
     font-family: sans-serif;
 
     display: inline-block;
@@ -89,5 +89,5 @@ span.data
 
 div.weather_hour > div
 {
-    border-bottom: dotted;
+    border-bottom: 1px solid;
 }
