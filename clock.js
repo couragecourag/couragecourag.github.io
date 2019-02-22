@@ -94,7 +94,7 @@ function weather() {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
         //console.log(json);
-        for (var i = 0; i < 49; i++) {
+        for (var i = 0; i < 49; i += 3) {
             var hourly = json["hourly"]["data"][i];
 
             //$("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
@@ -121,7 +121,7 @@ function initialize() {
     hoge = hoge.attr('id', "hour0");
     hoge.appendTo("#weather_frame_current");
 
-    for (var i = 1; i < 49; i++) {
+    for (var i = 0; i < 49; i += 3) {
         var hoge = $("#hour_template").clone();
         hoge = hoge.attr('id', "hour" + i);
         hoge.appendTo("#weather_frame");
@@ -136,7 +136,7 @@ function initialize() {
         draggable: false,
         arrows: false,
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 1
     });
 
     weather();
@@ -147,5 +147,6 @@ function initialize() {
 $(document).ready(function () {
     initialize()
     setInterval(clock, 1000);
-    setColorNegative();
+
+    setTimeout(setColorNegative, 1000);
 });

@@ -64,7 +64,7 @@ span#weather_frame_current
 
 img.icon
 {
-    width: 30px;
+    width: 60px;
 }
 
 div#hour_template
