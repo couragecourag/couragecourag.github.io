@@ -55,13 +55,13 @@ function getUvIndex(uv) {
     if (11 <= uv) {
         return "極端に強い";
     }
-    else if (8 <= uv) {
+    if (8 <= uv) {
         return "非常に強い";
     }
-    else if (6 <= uv) {
+    if (6 <= uv) {
         return "強い";
     }
-    else if (3 <= uv) {
+    if (3 <= uv) {
         return "中程度";
     }
 
@@ -87,13 +87,69 @@ function getShortTimeString(time) {
     return mo + "/" + d + " " + h + "時";
 }
 
+function getTimeString(time) {
+    var now = new Date(time * 1000);
+    now.setHours(now.getHours() + 9);
+
+    // 月 0~11で取得されるので実際の月は+1したものとなる
+    var mo = now.getMonth() + 1;
+    // 日
+    var d = now.getDate();
+    // 時
+    var h = now.getHours();
+    // 分
+    var mi = now.getMinutes();
+
+    // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
+    if (mo < 10) mo = "0" + mo;
+    if (d < 10) d = "0" + d;
+    if (h < 10) h = "0" + h;
+    if (mi < 10) mi = "0" + mi;
+
+    return mo + "/" + d + " " + h + "時" + mi + "分";
+}
+
+function getMoonEmoji(moonPhase) {
+    if (moonPhase >= 1) {
+        return "🌑"
+    }
+    if (moonPhase >= 0.875) {
+        return "🌘"
+    }
+    if (moonPhase >= 0.75) {
+        return "🌗"
+    }
+    if (moonPhase >= 0.625) {
+        return "🌖"
+    }
+    if (moonPhase >= 0.5) {
+        return "🌕"
+    }
+    if (moonPhase >= 0.375) {
+        return "🌔"
+    }
+    if (moonPhase >= 0.25) {
+        return "🌓"
+    }
+    if (moonPhase >= 0.125) {
+        return "🌒"
+    }
+
+    return "🌒"
+}
+
 function weather() {
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8268e0caa7f76b405e49fdcd45e7eec2/34.805,135.585?units=si&lang=ja',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
-        //console.log(json);
+        for (var i = 0; i < 3; i++) {
+            $("#sunmoon" + i + " .sunrise .data").text(getTimeString(json["daily"]["data"][i]["sunriseTime"]));
+            $("#sunmoon" + i + " .sunset .data").text(getTimeString(json["daily"]["data"][i]["sunsetTime"]));
+            $("#sunmoon" + i + " .moonphase .data").text(getMoonEmoji(json["daily"]["data"][i]["moonPhase"]));
+        }
+
         for (var i = 0; i < 49; i += 3) {
             var hourly = json["hourly"]["data"][i];
 
@@ -129,14 +185,14 @@ function initialize() {
 
     $('#weather_frame').slick({
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 5000,
         speed: 0,
         infinite: true,
         swipe: false,
         draggable: false,
         arrows: false,
         slidesToShow: 2,
-        slidesToScroll: 1
+        slidesToScroll: 2
     });
 
     weather();

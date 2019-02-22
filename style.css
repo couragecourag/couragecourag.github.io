@@ -91,3 +91,18 @@ div.weather_hour > div
 {
     border-bottom: 1px solid;
 }
+
+div.sunmoon > span > span.caption
+{
+    width: 50px;
+}
+
+div.sunmoon > span > span.data
+{
+    width: 150px;
+}
+
+div.sunmoon > span.moonphase > span.data
+{
+    width: 50px;
+}
