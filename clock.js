@@ -70,6 +70,7 @@ function getUvIndex(uv) {
 
 function getShortTimeString(time) {
     var now = new Date(time * 1000);
+    now.setHours(now.getHours() + 9);
 
     // 月 0~11で取得されるので実際の月は+1したものとなる
     var mo = now.getMonth() + 1;
@@ -116,8 +117,6 @@ function weather() {
 }
 
 function initialize() {
-    setColorNegative();
-
     var hoge = $("#hour_template").clone();
     hoge = hoge.attr('id', "hour0");
     hoge.appendTo("#weather_frame_current");
@@ -147,6 +146,6 @@ function initialize() {
 
 $(document).ready(function () {
     initialize()
-
     setInterval(clock, 1000);
+    setColorNegative();
 });
