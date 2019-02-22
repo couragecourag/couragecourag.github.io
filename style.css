@@ -43,6 +43,7 @@ span#clock_time
 {
     /* フォントの大きさを親要素であるdivで設定されたサイズ(px)の2倍にする */
     font-size: 4.5em;
+    margin-bottom: -1em;
 }
 
 div#weather_frame
