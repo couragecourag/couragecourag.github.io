@@ -1,7 +1,5 @@
 // 時計のメインとなる関数
 function clock() {
-    alert("0");
-
     // 曜日を表す各文字列の配列
     var weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat");
     // 現在日時を表すインスタンスを取得
@@ -23,6 +21,12 @@ function clock() {
     // 秒
     var s = now.getSeconds();
 
+    /*
+    if (mi % 10 == 0 && s == 0) {
+        setColorNegative();
+    }
+    */
+
     // 日付時刻文字列のなかで常に2ケタにしておきたい部分はここで処理
     if (mo < 10) mo = "0" + mo;
     if (d < 10) d = "0" + d;
@@ -30,18 +34,14 @@ function clock() {
     if (mi < 10) mi = "0" + mi;
     if (s < 10) s = "0" + s;
 
-    alert("1");
-
     //　HTML: <span id="clock_date">(ココの日付文字列を書き換え)</span>
     document.getElementById("clock_date").innerHTML = y + "/" + mo + "/" + d + " " + w;
     //　HTML: <span id="clock_time">(ココの時刻文字列を書き換え)</span>
     $("#clock_h").text(h);
-    /*
     $("#clock_coron").css("visibility", "hidden");
     setTimeout(() => {
         $("#clock_coron").css("visibility", "visible");
     }, 500);
-    */
     $("#clock_mi").text(mi);
     //　HTML: <div id="clock_frame"> の内部要素のフォントサイズをウインドウサイズの10分の1ピクセルに設定
     //document.getElementById("clock_frame").style.fontSize = window.innerWidth / 10 + "px";
@@ -95,13 +95,12 @@ function getShortTimeString(time) {
 }
 
 function weather() {
-    alert("00");
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8268e0caa7f76b405e49fdcd45e7eec2/34.805,135.585?units=si&lang=ja',
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
-        alert("01");
+        //console.log(json);
         for (var i = 0; i < 6; i++) {
             var hourly = json["hourly"]["data"][i];
             var hoge = $("#hour_template").clone();
@@ -124,31 +123,24 @@ function weather() {
             $("#hour" + i + " .uvIndex .data").text(getUvIndex(hourly["uvIndex"]));
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
-        alert("02");
+
+
+        $('#weather_frame').slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            speed: 0,
+            infinite: true,
+            swipe: false,
+            draggable: false,
+            arrows: false,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
     });
-    alert("03");
 }
-
 weather();
-
 setInterval(clock, 1000);
+//setInterval(weather, 3600000);
 
-setInterval(() => {
-    setColorNegative;
-    weather();
-}, 3600000);
-
-
-setTimeout(() => {
-    $('#weather_frame').slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        speed: 0,
-        infinite: true,
-        swipe: false,
-        draggable: false,
-        arrows: false,
-        slidesToShow: 3,
-        slidesToScroll: 3
-    });
-}, 10000);
+$(document).ready(function () {
+});
