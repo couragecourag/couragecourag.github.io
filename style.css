@@ -23,7 +23,8 @@ div#clock_frame
     width: 100%;
     font-size: 2.5em;
     text-align: center;
-    font-family: 'Teko';
+    /*font-family: 'Teko';*/
+    font-family: 'Sawarabi Mincho';
 }
 
 /* id="clock_date" のspan要素 */
@@ -71,5 +72,10 @@ div#hour_template
 
 span.caption
 {
-    width: 100px;
+    width: 60px;
+}
+
+span.data
+{
+    width: 160px;
 }
