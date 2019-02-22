@@ -96,16 +96,13 @@ function weather() {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     }).done(function (json) {
         //console.log(json);
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 49; i++) {
             var hourly = json["hourly"]["data"][i];
-            var hoge = $("#hour_template").clone();
-            hoge = hoge.attr('id', "hour" + i);
-            hoge.appendTo("#weather_frame");
 
             //$("#hour_template").clone().attr('id', "hour" + i).appendTo("#weather_frame");
             $("#hour" + i + " .time .data").text(getShortTimeString(hourly["time"]));
             $("#hour" + i + " .summry .data").text(hourly["summary"]);
-            $("#hour" + i + " .icon img").attr("src", "https://darksky.net/images/weather-icons/" + hourly["icon"] + ".png");
+            $("#hour" + i + " .icon .data img").attr("src", "https://darksky.net/images/weather-icons/" + hourly["icon"] + ".png");
             $("#hour" + i + " .precipIntensity .data").text(hourly["precipIntensity"] + "mm");
             $("#hour" + i + " .precipProbability .data").text(Math.floor(hourly["precipProbability"] * 10000) / 100 + "%");
             $("#hour" + i + " .temperature .data").text(hourly["temperature"] + "℃");
@@ -118,24 +115,41 @@ function weather() {
             $("#hour" + i + " .uvIndex .data").text(getUvIndex(hourly["uvIndex"]));
             $("#hour" + i + " .visibility .data").text(hourly["visibility"] + "㎞");
         };
-
-
-        $('#weather_frame').slick({
-            autoplay: true,
-            autoplaySpeed: 1000,
-            speed: 0,
-            infinite: true,
-            swipe: false,
-            draggable: false,
-            arrows: false,
-            slidesToShow: 3,
-            slidesToScroll: 3
-        });
     });
 }
-weather();
-setInterval(clock, 1000);
-//setInterval(weather, 3600000);
+
+function initialize() {
+
+    var hoge = $("#hour_template").clone();
+    hoge = hoge.attr('id', "hour0");
+    hoge.appendTo("#weather_frame_current");
+
+    for (var i = 1; i < 49; i++) {
+        var hoge = $("#hour_template").clone();
+        hoge = hoge.attr('id', "hour" + i);
+        hoge.appendTo("#weather_frame");
+    }
+
+    $('#weather_frame').slick({
+        autoplay: true,
+        autoplaySpeed: 100,
+        speed: 1000,
+        infinite: true,
+        swipe: false,
+        draggable: false,
+        arrows: false,
+        slidesToShow: 2,
+        slidesToScroll: 2
+    });
+
+    weather();
+}
+
+
 
 $(document).ready(function () {
+    initialize()
+
+    setInterval(clock, 1000);
+    //setInterval(weather, 1000);
 });

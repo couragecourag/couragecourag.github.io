@@ -25,8 +25,10 @@
         <span id="clock_time"></span>
     </div>
 
-    <div id="weather_frame">
-    </div>
+    <span id="weather_frame_current">
+    </span>
+    <span id="weather_frame">
+    </span>
 
     <div id="hour_template" class="weather_hour">
         <div class="time">
@@ -40,16 +42,19 @@
         </div>
 
         <div class="icon">
-            <img src="https://darksky.net/images/weather-icons/partly-cloudy-day.png" class="icon">
+            <span class="caption">概要</span>
+            <span class="data">
+                <img src="https://darksky.net/images/weather-icons/partly-cloudy-day.png" class="icon">
+            </span>
         </div>
 
         <div class="precipIntensity">
-            <span class="caption">降水量</span>
+            <span class="caption">降水</span>
             <span class="data"></span>
         </div>
 
         <div class="precipProbability">
-            <span class="caption">降水確率</span>
+            <span class="caption">確率</span>
             <span class="data"></span>
         </div>
 
@@ -59,7 +64,7 @@
         </div>
 
         <div class="apparentTemperature">
-            <span class="caption">体感温度</span>
+            <span class="caption">温度</span>
             <span class="data"></span>
         </div>
 
@@ -79,7 +84,7 @@
         </div>
 
         <div class="windBearing">
-            <span class="caption">風向き</span>
+            <span class="caption">風向</span>
             <span class="data"></span>
         </div>
 
@@ -89,7 +94,7 @@
         </div>
 
         <div class="uvIndex">
-            <span class="caption">UV指数</span>
+            <span class="caption">UV</span>
             <span class="data"></span>
         </div>
 
